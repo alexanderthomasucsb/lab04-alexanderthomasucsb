@@ -8,11 +8,18 @@
 
 using namespace std;
 
+
+int nonDuckCount = 0;
+
 void processLine(string thisLine, int &duckCount) {
   
   int pos = thisLine.find("duck");
-  if (pos != string::npos)
+  if (pos != string::npos){
     duckCount = duckCount + 1;
+  }
+  else{
+	  nonDuckCount = nonDuckCount +1;
+  }
     
 }
 
@@ -28,6 +35,8 @@ int main(int argc, char *argv[])
   string thisLine;
 
   int duckCount = 0;
+  int animalCount = 0;
+  
 
   ifs.open(argv[1]);
 
@@ -43,7 +52,13 @@ int main(int argc, char *argv[])
   }
 
 
-  cout << "There were " << duckCount << " ducks in " << argv[1] <<  endl;
+  animalCount = duckCount +nonDuckCount;
+
+
+  cout << "Report for " << argv[1] << ":" << endl;
+  cout << "   Animal count:    " << animalCount<<endl;
+  cout << "   Duck count:      " << duckCount<<endl;
+  cout << "   Non duck count:  " << nonDuckCount<<endl;
 
 
 
